@@ -1,0 +1,47 @@
+{% extends "photo/layout.html" %}
+{% block title  %}MyGallery{% endblock %}
+
+{% block body %}
+{% for ima in image %}
+<div id="bigimage_title">
+<h2>{{ ima.title }}</h2>
+</div>
+<!-- <div id="image_all" class='w-100  mx-auto'> -->
+<!-- <h3>{{ ima.title }}</h3> -->
+  <div class="bigimage">
+    <img src="{{ ima.picture.url }}" alt="{{ ima.title }}">
+    <div class="bigimage_content">
+      <h2>{{ ima.title }}</h2>
+      <h4>by -{{ ima.userid }}</h4>
+      <br>
+      <h6>{{ ima.date }}</h6>
+      <br>
+      <p>Total votes : {{ ima.vote_score }}</p>
+      {% if user == ima.userid %}
+      <a href="{% url 'deleteImage' ima.userid ima.id  %}">
+          <button type="button" class="btn btn-outline-light">Delete</button>
+      </a>
+      <a href="{% url 'editimage' ima.userid ima.id  %}">
+          <button type="button" class="btn btn-outline-light">Edit</button>
+      </a>
+      {% if message %}
+    <div class='text-center'>
+        {{message}}
+    </div>
+    {% endif %}
+      {% endif %}
+      {% if user != ima.userid %}
+      <a href="{% url 'voteimage' request.user ima.id  %}">
+          <button type="button" class="btn btn-primary" id="voted">Vote</button>
+      </a>
+      {% endif %}
+      <p>{{ ima.description }}</p>
+    </div>
+  </div>
+
+
+
+  <!-- </div> -->
+
+{% endfor %}
+{% endblock %}

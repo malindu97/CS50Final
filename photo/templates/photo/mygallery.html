@@ -1,0 +1,25 @@
+{% extends "photo/layout.html" %}
+{% block title  %}MyGallery{% endblock %}
+
+{% block body %}
+<div id="intro" class='w-75  mx-auto'>
+<h1>Welcome to your gallery</h1>
+</div>
+<div id="image_all" class='w-100  mx-auto'>
+<div class="row my-auto">
+  {% for image in images %}
+  <div class="col-md-4">
+    <div class="thumbnail">
+      <a href="{% url 'viewimage' image.userid image.id %}">
+        <img src="{{ image.picture.url }}" alt="{{ image.title }}" width="390px" height="240px">
+        <h5>{{ image.title }}<h5>
+        <!-- <img src="/w3images/lights.jpg" alt="Lights" > -->
+      </a>
+    </div>
+  </div>
+
+  {% endfor %}
+</div>
+</div>
+
+{% endblock %}

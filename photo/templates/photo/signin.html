@@ -1,0 +1,36 @@
+{% extends "photo/layout.html" %}
+
+{% block body %}
+<div id="intro" class='w-50  mx-auto'>
+<h1>please Signup</h1>
+<form action="{% url 'signin' %}" method="post">
+    {% csrf_token %}
+  <div class="form-group">
+    <label for="firstname">Firstname</label>
+    <input type="text" class="form-control" id="firstname" name="firstname" autocomplete="off" required>
+  </div>
+  <div class="form-group">
+    <label for="lastname">Lastname</label>
+    <input type="text" class="form-control" id="lastname" name="lastname" autocomplete="off" required>
+  </div>
+  <div class="form-group">
+    <label for="firstname">Username</label>
+    <input type="text" class="form-control" id="username" name="username" autocomplete="off" required>
+  </div>
+  <div class="form-group">
+    <label for="email">Email address</label>
+    <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name="email" autocomplete="off" required>
+    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+  </div>
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input type="password" class="form-control" id="password" name="password" required>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+  <div class='text-center m-2'>
+      Already got an Account? <a href="{% url 'home' %}">Log In</a>
+  </div>
+</form>
+</div>
+
+{% endblock %}

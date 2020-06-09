@@ -1,0 +1,27 @@
+{% extends "photo/layout.html" %}
+{% block title  %}Upload{% endblock %}
+
+{% block body %}
+{% for ima in image %}
+<div id="intro" class='w-75  mx-auto'>
+<h1>Edit</h1>
+<form action="{% url 'updateimage' ima.userid ima.id %}" method="post">
+    {% csrf_token %}
+  <div class="form-group">
+    <label for="image_title">Image Title :</label>
+    <input type="text" class="form-control" name="image_title" autocomplete="off" value="{{ ima.title }}" required >
+  </div>
+  <div class="form-group">
+    <label for="image_description">Description :</label>
+    <textarea class="form-control" name="image_description" rows="3" required>{{ ima.description }}</textarea>
+  </div>
+  <!-- <div class="form-group">
+    <label for="image_url">Upload your image here :</label>
+    <input type="url" class="form-control" name="image_url" autocomplete="off" required>
+    <input type="file" class="form-control" name="image_file" required>
+  </div> -->
+  <button type="submit" class="btn btn-primary">Update</button>
+</form>
+</div>
+{% endfor %}
+{% endblock %}
