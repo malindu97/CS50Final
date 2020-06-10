@@ -129,8 +129,10 @@ def voteimage(request, user, id):
     #     message = "You already voted"
     #     return render(request, "photo/imageview.html",{'image':imagefile},message)
     # image_vote = images.objects.get(imageid=id).image_vote
+    userid = request.user.id
     review = images.objects.get(pk=id)
-    review.votes.up(id)
+    review.votes.up(userid)
+    
     imagefile = images.objects.filter(id=id)
     # add=votes(userid=request.user,imageid=id,votes_num=1)
     # add.save()
