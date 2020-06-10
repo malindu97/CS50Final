@@ -42,7 +42,8 @@ def login_view(request):
             return HttpResponseRedirect(reverse("home"))
             user.is_active = True
         else:
-            return render(request,"photo/login.html")
+            error = "Please check your username and password"
+            return render(request,"photo/login.html", {'message':error})
 
 def logout_view(request):
     logout(request)

@@ -15,8 +15,13 @@
   </div>
   <div class="form-group">
     <label for="password">Password</label>
-    <input type="password" class="form-control" name="password_form">
+    <input type="password" class="form-control" name="password_form" autocomplete="off">
   </div>
+  {% if message %}
+  <div class="form-group">
+    <label id="error_message">{{ message }}</label>
+  </div>
+  {% endif %}
   <button type="submit" class="btn btn-primary">Login</button>
   <div class='text-center m-2'>
       No account yet? <a href="{% url 'signin'%}">Signup</a>

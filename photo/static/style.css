@@ -99,3 +99,7 @@ width: 50%
 .bigimage_content a{
   text-decoration: none;
 }
+
+#error_message{
+  color: red;
+}
